@@ -53,7 +53,7 @@
         4) Shared libraries: Flutter test command depends on this library being available in your environment.
             - libGLU.so.1 - provided by mesa packages such as libglu1-mesa on Ubuntu/Debian and mesa-libGLU on Fedora.
 
-For Windows,
+# For Windows,
 Download Flutter SDK and Extract the zip file and place the contained flutter in the desired installation location for the Flutter SDK (for example, C:\src\flutter).
         Warning: Do not install Flutter to a path that contains special characters or spaces.
         Warning: Do not install Flutter in a directory like C:\Program Files\ that requires elevated privileges.
@@ -68,7 +68,7 @@ choose 'Path' and click on 'Edit...',
     Will open another Dialog Window,
 click 'New', Add flutter sdk path like "C:\Users\User\flutter\bin" then click 'OK'
 
-For MacOS,
+# For MacOS,
 Download Flutter SDK and Unzip the zip archive in a folder, say /path/to/flutter
 
 Update the system path to include flutter bin directory (in ~/.bashrc file).
@@ -79,6 +79,15 @@ Enable the updated path in the current session using below command and then veri
     source $HOME/.bash_profile  
     echo $PATH
 
+# For Linux
+Download Flutter SDK and Extract the downloaded package using the following command.
+    tar xf ~/flutter.tar.xz
+
+Add the flutter bin folder path to environment path by entering it in terminal.
+    export PATH="$PATH:`pwd`/flutter/bin"
+
+-----------------------------------
+
 Run 'flutter doctor' command in Command Prompt to check flutter installation status
 
 Install VS Code and Flutter and Dart Extensions
@@ -86,6 +95,7 @@ Install VS Code and Flutter and Dart Extensions
 Install the latest Android SDK, if reported by flutter doctor
 
 Install the latest Android Studio and add Flutter and Dart Plugins, if reported by flutter doctor
+
 
 # For Create a New Flutter Project 
 
