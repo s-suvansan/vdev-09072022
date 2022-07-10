@@ -4,9 +4,11 @@ import 'package:fashion/common/validation.dart';
 import 'package:fashion/dashboard/dashboard_view.dart';
 import 'package:fashion/model/user_login_status_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 import '../common/app.dart';
+import '../provider/dashboard_provider.dart';
 
 class LoginViewModel extends BaseViewModel {
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
@@ -54,6 +56,7 @@ class LoginViewModel extends BaseViewModel {
         );
         await App.setUserLoginStatus(jsonEncode(userLoginStatusModel.toJson()));
         Future.delayed(Duration.zero, () {
+          context.read<DashboardProvider>().getCategories();
           Navigator.popAndPushNamed(context, DashboardView.routeName, arguments: userLoginStatusModel);
         });
         debugPrint("done $index");

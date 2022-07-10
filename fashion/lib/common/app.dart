@@ -1,9 +1,22 @@
 import 'package:fashion/common/key.dart';
 import 'package:fashion/common/local_storage.dart';
+import 'package:flutter/material.dart';
 
 class App {
-  static String price(double price) {
-    return "Rs.${price.toStringAsFixed(2)}";
+  static String price(dynamic price) {
+    try {
+      return "Rs.${price.toStringAsFixed(2)}";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  static String capitalize(String text) {
+    try {
+      return "${text[0].toUpperCase()}${text.substring(1).toLowerCase()}";
+    } catch (e) {
+      return text;
+    }
   }
 
   static String formattedDateTime(String? date) {
@@ -21,6 +34,17 @@ class App {
     } catch (e) {
       return "";
     }
+  }
+
+  static Future<dynamic> showCommonPopup(BuildContext context, Widget widget, {boolbarrierDismissible = true}) async {
+    dynamic value;
+    value = await showDialog(
+        barrierDismissible: boolbarrierDismissible,
+        context: context,
+        builder: (BuildContext bc) {
+          return widget;
+        });
+    return value;
   }
 
   static Future<void> setUserLoginStatus(String value) async {
