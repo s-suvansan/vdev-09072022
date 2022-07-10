@@ -1,6 +1,8 @@
 import 'package:fashion/common/brand_color.dart';
 import 'package:fashion/dashboard/dashboard_view.dart';
+import 'package:fashion/product/product_view.dart';
 import 'package:fashion/provider/dashboard_provider.dart';
+import 'package:fashion/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<DashboardProvider>(create: (_) => DashboardProvider()),
+        ChangeNotifierProvider<ProductProvider>(create: (_) => ProductProvider()),
       ],
       child: const MyApp(),
     ),
@@ -41,4 +44,5 @@ class MyApp extends StatelessWidget {
 Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
   LoginView.routeName: ((context) => const LoginView()),
   DashboardView.routeName: ((context) => const DashboardView()),
+  ProductView.routeName: ((context) => const ProductView()),
 };

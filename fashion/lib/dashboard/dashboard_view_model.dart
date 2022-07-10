@@ -1,5 +1,8 @@
 import 'package:fashion/login/login_view.dart';
+import 'package:fashion/model/product_model.dart';
 import 'package:fashion/model/user_login_status_model.dart';
+import 'package:fashion/product/product_view.dart';
+import 'package:fashion/provider/product_provider.dart';
 import 'package:fashion/services/http_service.dart';
 import 'package:fashion/widget/common_popup.dart';
 import 'package:flutter/material.dart';
@@ -31,5 +34,10 @@ class DashboardViewModel extends BaseViewModel {
         Navigator.popAndPushNamed(context, LoginView.routeName);
       }
     });
+  }
+
+  void openProductView(BuildContext context, ProductModel product) {
+    context.read<ProductProvider>().getSingleProduct(id: product.id!);
+    Navigator.of(context).pushNamed(ProductView.routeName);
   }
 }

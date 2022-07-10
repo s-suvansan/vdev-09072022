@@ -145,44 +145,56 @@ class _ProductList extends ViewModelWidget<DashboardViewModel> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return Container(
-            // height: 90.0,
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(color: BrandColor.brandColor.withOpacity(0.2), borderRadius: BorderRadius.circular(4.0)),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Expanded(
-                child: SizedBox(
-                  height: 80.0,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BrandText.commonText(
-                          text: products![index].title.toString(), fontSize: 14.0, maxLines: 2, fontWeight: BrandText.medium),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          BrandText.commonText(text: App.price(products![index].price), fontSize: 12.0),
-                          // BrandText.commonText(text: App.price(12.4), fontSize: 12.0),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8.0),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4.0),
-                child: Container(
-                  color: BrandColor.light,
-                  child: Image.network(
-                    products![index].image.toString(),
-                    width: 80.0,
+          return GestureDetector(
+            onTap: () => viewModel.openProductView(context, products![index]),
+            child: Container(
+              // height: 90.0,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(color: BrandColor.brandColor.withOpacity(0.2), borderRadius: BorderRadius.circular(4.0)),
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Expanded(
+                  child: SizedBox(
                     height: 80.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BrandText.commonText(
+                            text: products![index].title.toString(), fontSize: 14.0, maxLines: 2, fontWeight: BrandText.medium),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            BrandText.commonText(text: App.price(products![index].price), fontSize: 12.0),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  size: 14.0,
+                                  color: BrandColor.dark.withOpacity(0.6),
+                                ),
+                                BrandText.commonText(text: App.rating(products![index].rating), fontSize: 12.0),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              )
-            ]),
+                const SizedBox(width: 8.0),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(4.0),
+                  child: Container(
+                    color: BrandColor.light,
+                    child: Image.network(
+                      products![index].image.toString(),
+                      width: 80.0,
+                      height: 80.0,
+                    ),
+                  ),
+                )
+              ]),
+            ),
           );
         },
         separatorBuilder: (_, __) => const SizedBox(height: 8.0),

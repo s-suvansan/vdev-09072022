@@ -29,4 +29,18 @@ class ProductService {
       return [];
     }
   }
+
+  static Future<ProductModel?> getSingleProducts({required int id}) async {
+    try {
+      ResponseBody responseBody = await get("products/$id");
+      if (!responseBody.isError) {
+        ProductModel product = ProductModel.fromJson(responseBody.result);
+        return product;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
 }
