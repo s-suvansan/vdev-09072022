@@ -1,3 +1,4 @@
+import 'package:fashion/common/assets.dart';
 import 'package:fashion/common/brand_color.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -15,7 +16,13 @@ class InitView extends StatelessWidget {
         builder: (context, model, _) {
           return Scaffold(
             backgroundColor: BrandColor.brandColor,
-            body: Container(),
+            body: Center(
+              child: Image.asset(
+                logo,
+                height: 128.0,
+                width: 128.0,
+              ),
+            ),
           );
         });
   }
