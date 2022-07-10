@@ -3,7 +3,6 @@ import 'package:fashion/model/product_model.dart';
 import 'package:fashion/model/user_login_status_model.dart';
 import 'package:fashion/product/product_view.dart';
 import 'package:fashion/provider/product_provider.dart';
-import 'package:fashion/services/http_service.dart';
 import 'package:fashion/widget/common_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

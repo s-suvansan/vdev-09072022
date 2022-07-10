@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fashion/common/brand_color.dart';
 import 'package:fashion/common/brand_text.dart';
 import 'package:fashion/provider/dashboard_provider.dart';

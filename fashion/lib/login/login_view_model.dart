@@ -20,7 +20,7 @@ class LoginViewModel extends BaseViewModel {
     User(email: "joe@black.lk", password: "Jo45*78"),
     User(email: "amal@acme.lk", password: "La79*!_io"),
     User(email: "peter@pan.lk", password: "Nap42-24"),
-    User(email: "suvansan@gmail.com", password: "Suvansan@6"),
+    // User(email: "suvansan@gmail.com", password: "Suvansan@6"),
   ];
 
   String _errorText = "";
