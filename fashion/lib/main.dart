@@ -1,11 +1,21 @@
 import 'package:fashion/common/brand_color.dart';
 import 'package:fashion/dashboard/dashboard_view.dart';
+import 'package:fashion/provider/dashboard_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'init/init_view.dart';
 import 'login/login_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<DashboardProvider>(create: (_) => DashboardProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +33,7 @@ class MyApp extends StatelessWidget {
           secondary: BrandColor.brandColor,
         ),
       ),
-      home: const LoginView(),
+      home: const InitView(),
     );
   }
 }

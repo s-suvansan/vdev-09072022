@@ -1,3 +1,4 @@
+import 'package:fashion/login/login_view.dart';
 import 'package:fashion/model/user_login_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -11,5 +12,10 @@ class DashboardViewModel extends BaseViewModel {
   void onInit(BuildContext context) {
     _userLoginStatusModel = ModalRoute.of(context)?.settings.arguments as UserLoginStatusModel;
     debugPrint(App.formattedDateTime(_userLoginStatusModel?.signInDate));
+  }
+
+  void onSignOut(BuildContext context) {
+    App.removeUserLoginStatus();
+    Navigator.popAndPushNamed(context, LoginView.routeName);
   }
 }

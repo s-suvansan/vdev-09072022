@@ -4,6 +4,8 @@ import 'package:fashion/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../widget/common_button.dart';
+
 class LoginView extends StatelessWidget {
   static const routeName = "Login";
 
@@ -55,7 +57,13 @@ class _LoginForm extends ViewModelWidget<LoginViewModel> {
             type: LoginType.password,
           ),
           const SizedBox(height: 12.0),
-          const _Button(),
+          Align(
+            alignment: Alignment.centerRight,
+            child: CommonButton(
+              text: "Sign-in",
+              onTap: () => viewModel.onSignIn(context),
+            ),
+          ),
           if (viewModel.errorText != "")
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
@@ -86,7 +94,7 @@ class _LoginTextFeild extends ViewModelWidget<LoginViewModel> {
             flex: 1,
             child: Padding(
               padding: const EdgeInsets.only(top: 14.0),
-              child: BrandText.commonText(text: lable, fontSize: 16.0, fontWeight: BrandText.medium),
+              child: BrandText.commonText(text: lable, fontWeight: BrandText.medium),
             )),
         const SizedBox(width: 8.0),
         Expanded(flex: 3, child: _TextFeild(type: type)),
@@ -103,7 +111,7 @@ class _TextFeild extends ViewModelWidget<LoginViewModel> {
     return TextFormField(
       keyboardType: type == LoginType.email ? TextInputType.emailAddress : TextInputType.visiblePassword,
       textInputAction: type == LoginType.email ? TextInputAction.next : TextInputAction.done,
-      style: BrandText.textStyle(fontSize: 16.0, color: BrandColor.dark),
+      style: BrandText.textStyle(color: BrandColor.dark),
       obscureText: type == LoginType.password,
       decoration: InputDecoration(
         filled: true,
@@ -128,27 +136,4 @@ class _TextFeild extends ViewModelWidget<LoginViewModel> {
         borderSide: BorderSide(color: BrandColor.dark, width: 1.5),
         borderRadius: BorderRadius.circular(0.0),
       );
-}
-
-class _Button extends ViewModelWidget<LoginViewModel> {
-  const _Button({Key? key}) : super(key: key, reactive: false);
-  @override
-  Widget build(BuildContext context, LoginViewModel viewModel) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: GestureDetector(
-        onTap: () => viewModel.onSignIn(context),
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-          decoration: BoxDecoration(
-              color: BrandColor.brandColor.withOpacity(0.4),
-              border: Border.all(
-                color: BrandColor.brandColor,
-                width: 1.5,
-              )),
-          child: BrandText.commonText(text: "Sign-in", fontSize: 16.0),
-        ),
-      ),
-    );
-  }
 }

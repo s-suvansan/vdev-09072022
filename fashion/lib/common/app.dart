@@ -2,6 +2,10 @@ import 'package:fashion/common/key.dart';
 import 'package:fashion/common/local_storage.dart';
 
 class App {
+  static String price(double price) {
+    return "Rs.${price.toStringAsFixed(2)}";
+  }
+
   static String formattedDateTime(String? date) {
     try {
       List<String> months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

@@ -14,7 +14,7 @@ class BrandText {
     TextAlign? textAlign,
     FontWeight? fontWeight,
     Color? color,
-    double fontSize = 18.0,
+    double fontSize = 16.0,
     double letterSpacing = 0.2,
     FontStyle fontStyle = FontStyle.normal,
   }) {

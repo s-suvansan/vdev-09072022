@@ -54,7 +54,7 @@ class LoginViewModel extends BaseViewModel {
         );
         await App.setUserLoginStatus(jsonEncode(userLoginStatusModel.toJson()));
         Future.delayed(Duration.zero, () {
-          Navigator.pushNamed(context, DashboardView.routeName, arguments: userLoginStatusModel);
+          Navigator.popAndPushNamed(context, DashboardView.routeName, arguments: userLoginStatusModel);
         });
         debugPrint("done $index");
       } else {
